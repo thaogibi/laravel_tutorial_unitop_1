@@ -44,10 +44,20 @@ Route::get('/post/restore/{id}', 'PostController@restore');
 Route::get('/post/permanetlyDelete/{id}', 'PostController@permanetlyDelete');
 
 
-
+//phan11: relationship DB
 Route::get('images/read', 'FeaturedImageController@read');
 
 
 Route::get('users/read', 'UserController@read');
 
 Route::get('roles/read', 'RoleController@read');
+
+
+
+
+
+//phan12: FORM
+Route::get('post/add', 'PostController@add');
+
+
+
