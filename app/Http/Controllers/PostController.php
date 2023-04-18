@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FeaturedImage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;   //them vao
+use Illuminate\Support\Facades\DB;          //them vao
 use App\Models\Post;                        //them vao
 class PostController extends Controller
 {
@@ -123,11 +123,15 @@ class PostController extends Controller
 
 
         //c2: dung pt create  => khi đó phải điền fillable bên model
-            $post = Post::create([
-                'title' => 'title',
-                'content' => 'e',
-                'user_id' => 1
-            ]);
+            // $post = Post::create([
+            //     'title' => 'title',
+            //     'content' => 'e',
+            //     'user_id' => 1
+            // ]);
+
+
+        //p12: FORM
+            return view('post.create');
 
     }
 
