@@ -20,4 +20,9 @@ class UserController extends Controller
             // $roles = User::find(1)->roles;
             // return $roles;
     }
+
+
+    function add() {
+        return view('user.register');
+    }
 }

@@ -10,16 +10,22 @@
 <body>
   <div class="container">
     <h1>Add new post</h1>
+    {!! Form::open(['url' => 'post/store', 'method' => 'POST']) !!}
+      <div class="form-group">
+        {{-- <input type="text" class="form-control" name="title" placeholder="Title..."> --}}
+        {!! Form::text('title', '', ['class' => 'form-control', 'name' => 'title', 'placeholder' => 'Title...']) !!}
+      </div>
+      <div class="form-group">
+        {{-- <textarea name="content" class="form-control" placeholder="Content..." id="" cols="30" rows="10"></textarea> --}}
+        {!! Form::textarea('content', '', ['class' => 'form-control', 'name' => 'content', 'placeholder' => 'Content...', 'id' => '', 'cols' => '30', 'rows' => '10']) !!}
+      </div>
+      <div class="form-group">
+        {{-- <input type="submit" name="sm-add" value="Add new"> --}}
+        {!! Form::submit('Add new',  ['name' => 'sm-add', 'value' => 'Add new', 'class' => 'btn btn-dark']) !!}
+      </div>
+    {!! Form::close() !!}
     <form action="post/add" method="POST">
-      <div class="form-group">
-        <input type="text" class="form-control" name="title" placeholder="Title...">
-      </div>
-      <div class="form-group">
-        <textarea name="content" class="form-control" placeholder="Content..." id="" cols="30" rows="10"></textarea>
-      </div>
-      <div class="form-group">
-        <input type="submit" name="sm-add">
-      </div>
+      
     </form>
   </div>
 </body>

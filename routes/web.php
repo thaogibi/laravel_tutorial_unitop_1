@@ -59,5 +59,7 @@ Route::get('roles/read', 'RoleController@read');
 //phan12: FORM
 Route::get('post/add', 'PostController@add');
 
+Route::get('user/register', 'UserController@add');
+
 
 
