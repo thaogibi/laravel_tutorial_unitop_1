@@ -13,21 +13,27 @@
     @if($errors->any())
       <div class="alert alert-danger">
         Oops! something went wrong!
-        <ul>
+        {{-- <ul>
           @foreach($errors->all() as $error)
             <li>{{ $error }}</li>
           @endforeach
-        </ul>
+        </ul> --}}
       </div>
     @endif
     {!! Form::open(['url' => 'post/store', 'method' => 'POST']) !!}
       <div class="form-group">
         {{-- <input type="text" class="form-control" name="title" placeholder="Title..."> --}}
         {!! Form::text('title', '', ['class' => 'form-control', 'name' => 'title', 'placeholder' => 'Title...']) !!}
+        @error('title')
+          <small class="form-text text-danger">{{ $message }}</small>
+        @enderror
       </div>
       <div class="form-group">
         {{-- <textarea name="content" class="form-control" placeholder="Content..." id="" cols="30" rows="10"></textarea> --}}
         {!! Form::textarea('content', '', ['class' => 'form-control', 'name' => 'content', 'placeholder' => 'Content...', 'id' => '', 'cols' => '30', 'rows' => '10']) !!}
+        @error('content')
+          <small class="form-text text-danger">{{ $message }}</small>
+        @enderror
       </div>
       <div class="form-group">
         {{-- <input type="submit" name="sm-add" value="Add new"> --}}
