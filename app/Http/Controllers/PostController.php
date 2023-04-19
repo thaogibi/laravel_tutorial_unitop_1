@@ -139,19 +139,32 @@ class PostController extends Controller
     //store
     function store(Request $request) {
         $request->validate(
-        [
-            'title'=>'required|bail|min:3',  //rule ở đây
-            'content'=>'required|bail|min:10'
-        ],
-        [
-            'required' => ':attribute can not be blank'   // tuỳ chỉnh thông báo error <trường này có hoặc ko đều đc>
-        ],
-        [
-            'title' => 'Tiêu đề',             // chuyển tên attribute sang tên dễ hiểu khác hoặc trong TH chuyển sang tiếng việt...  <trường này có hoặc ko đều đc>
-            'content' => 'Nội dung'
-        ]
-    );
-        return $request->input();
+            [
+                'title'=>'required|bail|min:3',  //rule ở đây
+                'content'=>'required|bail|min:10'
+            ],
+            [
+                'required' => ':attribute can not be blank'   // tuỳ chỉnh thông báo error <trường này có hoặc ko đều đc>
+            ],
+            [
+                'title' => 'Tiêu đề',             // chuyển tên attribute sang tên dễ hiểu khác hoặc trong TH chuyển sang tiếng việt...  <trường này có hoặc ko đều đc>
+                'content' => 'Nội dung'
+            ]
+        );
+        if($request->hasFile('file')) {
+            $file = $request->file;
+            //lấy thông tin file
+            echo 'Tên file: ' . $file->getClientOriginalName() . '<br>';
+            echo 'Kích thước: ' . $file->getSize() . '<br>';
+            echo 'Đường dẫn thư mục: ' . $file->getRealPath() . '<br>';
+            echo 'Kiểu file: ' . $file->getMimeType() . '<br>';
+            echo 'Đuôi mở rộng: ' . $file->getClientOriginalExtension() . '<br>';
+
+            //chuyển file
+            echo 'Đường dẫn file sau khi upload thành công:' . $file->move('./upload', $file->getClientOriginalName());
+        }else {
+            echo 'No file choosen';
+        }
     }
 
 
