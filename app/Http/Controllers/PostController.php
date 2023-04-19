@@ -69,7 +69,7 @@ class PostController extends Controller
         //sau khi cài softDeletes
             // lệnh all() chỉ bao gồm những DL chưa xoá nhé
                 $posts = Post::all();
-                return $posts;
+                return view('post.index', compact('posts'));
 
             //muốn xuất all DL (cả đã xoá)
                 // $posts = Post::withTrashed()->get();
@@ -166,9 +166,10 @@ class PostController extends Controller
             echo 'Đuôi mở rộng: ' . $file->getClientOriginalExtension() . '<br>';
 
             //chuyển file
-            $path = $file->move('./upload', $file->getClientOriginalName());
-            echo 'Đường dẫn file sau khi upload thành công:' . $path;
-            $thumbnail = '.upload/' . $fileName;
+            $path = 'public/uploads/';
+            $file->move($path, $file->getClientOriginalName());
+            $thumbnail = $path . $fileName;
+            echo 'Đường dẫn file sau khi upload thành công:' . $thumbnail;
 
 
 
