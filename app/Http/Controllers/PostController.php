@@ -138,10 +138,19 @@ class PostController extends Controller
 
     //store
     function store(Request $request) {
-        $request->validate([
-            'title'=>'required|bail|min:3',
+        $request->validate(
+        [
+            'title'=>'required|bail|min:3',  //rule ở đây
             'content'=>'required|bail|min:10'
-        ]);
+        ],
+        [
+            'required' => ':attribute can not be blank'   // tuỳ chỉnh thông báo error <trường này có hoặc ko đều đc>
+        ],
+        [
+            'title' => 'Tiêu đề',             // chuyển tên attribute sang tên dễ hiểu khác hoặc trong TH chuyển sang tiếng việt...  <trường này có hoặc ko đều đc>
+            'content' => 'Nội dung'
+        ]
+    );
         return $request->input();
     }
 
