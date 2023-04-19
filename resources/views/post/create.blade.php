@@ -10,6 +10,16 @@
 <body>
   <div class="container">
     <h1>Add new post</h1>
+    @if($errors->any())
+      <div class="alert alert-danger">
+        Oops! something went wrong!
+        <ul>
+          @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
     {!! Form::open(['url' => 'post/store', 'method' => 'POST']) !!}
       <div class="form-group">
         {{-- <input type="text" class="form-control" name="title" placeholder="Title..."> --}}
