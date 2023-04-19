@@ -66,3 +66,6 @@ Route::get('user/register', 'UserController@add');
 
 //phan15: helper url
 Route::get('helper/url', 'HelperController@url');
+
+//phan 15: helper string
+Route::get('helper/string', 'HelperController@string');
