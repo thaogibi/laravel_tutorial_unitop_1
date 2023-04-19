@@ -68,12 +68,12 @@ class PostController extends Controller
 
         //sau khi cài softDeletes
             // lệnh all() chỉ bao gồm những DL chưa xoá nhé
-                // $posts = Post::all();
-                // return $posts;
+                $posts = Post::all();
+                return $posts;
 
             //muốn xuất all DL (cả đã xoá)
-                $posts = Post::withTrashed()->get();
-                return $posts;
+                // $posts = Post::withTrashed()->get();
+                // return $posts;
 
             // chỉ bao gồm những DL đã xoá nhé
                 // $posts = Post::onlyTrashed()->get();
@@ -151,20 +151,35 @@ class PostController extends Controller
                 'content' => 'Nội dung'
             ]
         );
+
+        $input = $request->all();  //lấy tất cả dữ liệu gửi lên cho vào $input 
+
+        // /sau đó check nếu có file thì lại cho đường dẫn vào $input (dưới đây)
         if($request->hasFile('file')) {
             $file = $request->file;
             //lấy thông tin file
-            echo 'Tên file: ' . $file->getClientOriginalName() . '<br>';
+            $fileName = $file->getClientOriginalName();
+            echo 'Tên file: ' . $fileName . '<br>';
             echo 'Kích thước: ' . $file->getSize() . '<br>';
             echo 'Đường dẫn thư mục: ' . $file->getRealPath() . '<br>';
             echo 'Kiểu file: ' . $file->getMimeType() . '<br>';
             echo 'Đuôi mở rộng: ' . $file->getClientOriginalExtension() . '<br>';
 
             //chuyển file
-            echo 'Đường dẫn file sau khi upload thành công:' . $file->move('./upload', $file->getClientOriginalName());
+            $path = $file->move('./upload', $file->getClientOriginalName());
+            echo 'Đường dẫn file sau khi upload thành công:' . $path;
+            $thumbnail = '.upload/' . $fileName;
+
+
+
+            $input['user_id'] = 1;
+            $input['thumbnail'] = $thumbnail;   //nếu có file thì tiếp tục chuyển đường dẫn file vào $input để cho vào DB
         }else {
             echo 'No file choosen';
         }
+
+        //lưu các dữ liệu $input nhận được vào DB
+        Post::create($input);  
     }
 
 
