@@ -2,6 +2,8 @@
 use App\Models\Post;                         //them vao
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +36,11 @@ use Illuminate\Support\Facades\DB;
 Route::get('/posts/read', 'PostController@read');
 Route::get('/posts/readForEachUser/{id}', 'PostController@readForEachUser');
 Route::get('/posts/readWithFilter', 'PostController@readWithFilter');
-Route::get('/posts/readForEach/{id}', 'PostController@readForEach');
+Route::get('/posts/show/{id}', 'PostController@show');
 
 
 Route::get('/post/add', 'PostController@add');
+Route::post('/post/store', 'PostController@store');
 Route::get('/post/update/{id}', 'PostController@update');
 Route::get('/post/delete/{id}', 'PostController@delete');
 Route::get('/post/restore/{id}', 'PostController@restore');
@@ -57,8 +60,6 @@ Route::get('roles/read', 'RoleController@read');
 
 
 //phan12: FORM
-Route::get('post/add', 'PostController@add');
-
 Route::get('user/register', 'UserController@add');
 
 
