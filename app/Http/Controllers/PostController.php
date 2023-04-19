@@ -181,6 +181,14 @@ class PostController extends Controller
 
         //lưu các dữ liệu $input nhận được vào DB
         Post::create($input);  
+
+
+
+        //c1: chuyển hướng url nội bộ
+            return redirect('posts/read')->with('status', 'Added new post success');
+        //c2: chuyển hướng đến route (dùng name của route đó nhé)
+            // return redirect()->route('posts.read')->with('status', 'Added new post success');
+        
     }
 
 
