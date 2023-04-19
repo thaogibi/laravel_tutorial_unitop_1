@@ -20,7 +20,7 @@
         </ul> --}}
       </div>
     @endif
-    {!! Form::open(['url' => 'post/store', 'method' => 'POST']) !!}
+    {!! Form::open(['url' => 'post/store', 'method' => 'POST', 'files' => true]) !!}
       <div class="form-group">
         {{-- <input type="text" class="form-control" name="title" placeholder="Title..."> --}}
         {!! Form::text('title', '', ['class' => 'form-control', 'name' => 'title', 'placeholder' => 'Title...']) !!}
@@ -34,6 +34,10 @@
         @error('content')
           <small class="form-text text-danger">{{ $message }}</small>
         @enderror
+      </div>
+      <div class="form-group">
+        {!! Form::file('file', ['class' => 'form-control-file']) !!}
+
       </div>
       <div class="form-group">
         {{-- <input type="submit" name="sm-add" value="Add new"> --}}
