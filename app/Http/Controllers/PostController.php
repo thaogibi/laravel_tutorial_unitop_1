@@ -102,7 +102,7 @@ class PostController extends Controller
     }
 
     //show
-    function readForEach($id) {
+    function show($id) {
         //c1:
             // $post = Post::where('id', $id) -> get();
         //c2:
@@ -134,6 +134,17 @@ class PostController extends Controller
             return view('post.create');
 
     }
+
+
+    //store
+    function store(Request $request) {
+        $request->validate([
+            'title'=>'required|bail|min:3',
+            'content'=>'required|bail|min:10'
+        ]);
+        return $request->input();
+    }
+
 
 
     //update
