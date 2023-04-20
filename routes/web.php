@@ -67,5 +67,13 @@ Route::get('user/register', 'UserController@add');
 //phan15: helper url
 Route::get('helper/url', 'HelperController@url');
 
-//phan 15: helper string
+
+//phan16: helper string
 Route::get('helper/string', 'HelperController@string');
+
+
+//phan17: session
+Route::get('session/add', 'SessionController@add');
+Route::get('session/show', 'SessionController@show');
+Route::get('session/add_flash', 'SessionController@add_flash');
+Route::get('session/delete', 'SessionController@delete');
