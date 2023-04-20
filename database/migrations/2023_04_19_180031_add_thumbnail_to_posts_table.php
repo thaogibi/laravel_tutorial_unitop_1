@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
-            $table->string('thumbnail', 255);
+            $table->string('thumbnail', 255)->nullable();
         });
     }
 
