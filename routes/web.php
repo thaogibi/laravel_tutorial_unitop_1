@@ -72,8 +72,11 @@ Route::get('helper/url', 'HelperController@url');
 Route::get('helper/string', 'HelperController@string');
 
 
-//phan17: session
+//phan17: session & cookie
 Route::get('session/add', 'SessionController@add');
 Route::get('session/show', 'SessionController@show');
 Route::get('session/add_flash', 'SessionController@add_flash');
 Route::get('session/delete', 'SessionController@delete');
+  //cookie
+Route::get('cookie/set', 'CookieController@set');
+Route::get('cookie/get', 'CookieController@get');
