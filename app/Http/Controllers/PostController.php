@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;          //them vao
 use App\Models\Post;                        //them vao
 class PostController extends Controller
 {
-    //
+    //QUERY BUILDER
     // function insert() {
     //     DB::table('posts') -> insert(
     //         [
@@ -68,8 +68,8 @@ class PostController extends Controller
 
         //sau khi cài softDeletes
             // lệnh all() chỉ bao gồm những DL chưa xoá nhé
-                $posts = Post::all();
-                return view('post.index', compact('posts'));
+                // $posts = Post::all();
+                // return view('post.index', compact('posts'));
 
             //muốn xuất all DL (cả đã xoá)
                 // $posts = Post::withTrashed()->get();
@@ -85,9 +85,22 @@ class PostController extends Controller
 
             //vd ve one-many (lay ra user)
                 // $user = Post::find(1)->user; //gọi method user đã định nghĩa trong model
-                // return $user;
+                // return $user;\
 
 
+        //phân trang
+
+            //Query builder
+                // $posts =  DB::table('posts')->paginate(4);
+                // return view('post.index', compact('posts'));
+
+
+            //ORM
+                $posts = Post::paginate(5);   // hoặc $posts = Post::simplePaginate(5);
+                // có điều kiện
+                    // $posts = Post::where('id','>',3)->orderby('id','desc')->paginate(5);
+                return view('post.index', compact('posts'));
+                
     }
 
     function readForEachUser($id) {
