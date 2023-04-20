@@ -33,7 +33,7 @@ use App\Http\Controllers\PostsController;
 //     return $posts;
 // });
 ////chuyen sang controller
-Route::get('/posts/read', 'PostController@read')->name('posts.read');
+Route::get('/posts', 'PostController@read')->name('posts.read');
 Route::get('/posts/readForEachUser/{id}', 'PostController@readForEachUser');
 Route::get('/posts/readWithFilter', 'PostController@readWithFilter');
 Route::get('/posts/show/{id}', 'PostController@show');
